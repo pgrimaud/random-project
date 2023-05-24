@@ -36,7 +36,7 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        axios.post('http://127.0.0.1:8000/api/auth/login', userObject)
+        axios.post(`${process.env.REACT_APP_HOST}/api/auth/login`, userObject)
             .then((res) => {
                if(res.status=== 200){
                 this.setState({

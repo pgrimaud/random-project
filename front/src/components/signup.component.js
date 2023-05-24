@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Outernavbar from './outernavbar.component'
- import axios from 'axios';
-
-
+import axios from 'axios';
 
 export default class SignUp extends Component {
 
@@ -69,7 +67,7 @@ export default class SignUp extends Component {
             password: this.state.password,
             password_confirmation: this.state.password_confirmation,
         };
-        axios.post('http://127.0.0.1:8000/api/auth/register', userObject)
+        axios.post(`${process.env.REACT_APP_HOST}/api/auth/register`, userObject)
             .then((res) => {
                console.log(res,"aaaaaaaaaaa");
                 if(res.data.message === "User successfully registered"){
