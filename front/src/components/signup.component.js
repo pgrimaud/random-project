@@ -67,7 +67,7 @@ export default class SignUp extends Component {
             password: this.state.password,
             password_confirmation: this.state.password_confirmation,
         };
-        axios.post(`${process.env.REACT_APP_HOST}/api/auth/register`, userObject)
+        axios.post(`${process.env.REACT_APP_API_HOST}/api/auth/register`, userObject)
             .then((res) => {
                console.log(res,"aaaaaaaaaaa");
                 if(res.data.message === "User successfully registered"){
