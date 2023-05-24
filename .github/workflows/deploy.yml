@@ -1,0 +1,37 @@
+name: deploy
+
+on:
+    push:
+        branches:
+            - droplet
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Build front
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.x
+              run: |
+                  cd front/
+                  npm install
+                  npm run build
+                  ll
+
+#            - name: Connects to VPS via SSH
+#              uses: appleboy/ssh-action@v0.1.3
+#              with:
+#                  username: ${{ secrets.SSH_USERNAME }}
+#                  host: ${{ secrets.SSH_HOST }}
+#                  key: ${{ secrets.SSH_KEY }}
+#                  port: ${{ secrets.SSH_PORT }}
+#                  script: |
+#                      ${{ secrets.SCRIPT }}
+#                      cd /var/www/random-project
+#                      git pull origin droplet
+#                      npm install
